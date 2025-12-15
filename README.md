@@ -718,4 +718,10 @@ Git
 * Too many shallow projects
 * No GitHub discipline
 
+---
 
+### Alternate Roadmap
+* [https://roadmap.sh/] Roadmap.sh
+
+### Dev Docs
+* https://devdocs.io/
