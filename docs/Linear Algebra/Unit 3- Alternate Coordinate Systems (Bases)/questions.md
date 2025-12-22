@@ -1,6 +1,8 @@
 # 📘 UNIT 3 — 50 QUESTIONS + HOTS
 
-## (With Examples, Detailed Answers, Math + ML)
+## Bases, Coordinates, Orthogonality & ML
+
+*(With Examples, Detailed Answers, Math + ML Insight)*
 
 ---
 
@@ -10,34 +12,43 @@
 
 ### **Q1. (Example)**
 
-Vector ( v = (4,2) ) is written as
-[
+Vector ( v = (4,2) ) is written as:
+
+```math
 v = 4(1,0) + 2(0,1)
-]
-What does this mean geometrically?
+```
+
+**What does this mean geometrically?**
 
 **Answer:**
-It means the vector is described using the **standard basis**. The numbers (4,2) are not the vector itself, but its **coordinates relative to the chosen basis**.
+The vector is expressed using the **standard basis**. The numbers (4,2) are **coordinates**, not the vector itself. They describe how much of each basis direction is needed.
 
 **ML meaning:**
-Raw features are coordinates in a chosen basis.
+Raw features are coordinates in a chosen feature basis.
 
 ---
 
 ### **Q2. (Example)**
 
-Given basis
-[
-b_1=(1,1),; b_2=(1,-1)
-]
+Given basis:
+
+```math
+b_1=(1,1), \; b_2=(1,-1)
+```
+
 Write ( v=(2,0) ) in this basis.
 
 **Answer:**
-Solve:
-[
+
+```math
 (2,0)=c_1(1,1)+c_2(1,-1)
-\Rightarrow c_1=1,;c_2=1
-]
+```
+
+Solving gives:
+
+```math
+c_1=1, \; c_2=1
+```
 
 **ML meaning:**
 Same data point, different feature representation.
@@ -49,19 +60,19 @@ Same data point, different feature representation.
 Why must basis vectors be linearly independent?
 
 **Answer:**
-If dependent, coordinates are not unique. ML models would learn redundant features.
+If they are dependent, coordinates are not unique. ML models would learn **redundant features**, harming interpretability and optimization.
 
 ---
 
 ### **Q4. (Example)**
 
-Why is ((1,0),(2,0)) not a valid basis for (\mathbb{R}^2)?
+Why is ( (1,0),(2,0) ) not a valid basis for ( \mathbb{R}^2 )?
 
 **Answer:**
-They lie on the same line and cannot span the plane.
+Both vectors lie on the same line, so they cannot span the plane.
 
 **ML meaning:**
-Features are redundant → rank deficiency.
+Rank-deficient feature matrix → loss of information.
 
 ---
 
@@ -70,7 +81,7 @@ Features are redundant → rank deficiency.
 Why do different bases describe the same vector differently?
 
 **Answer:**
-Coordinates depend on measurement axes, not the vector itself.
+Coordinates depend on measurement axes, not on the vector itself.
 
 ---
 
@@ -79,11 +90,7 @@ Coordinates depend on measurement axes, not the vector itself.
 In ML terms, what is a “bad basis”?
 
 **Answer:**
-A basis with:
-
-* High correlation
-* Redundancy
-* Poor conditioning
+A basis with high correlation, redundancy, and poor numerical conditioning.
 
 ---
 
@@ -92,7 +99,7 @@ A basis with:
 Why is pixel space a bad basis for images?
 
 **Answer:**
-Pixels are highly correlated. Meaningful patterns live in rotated/combined directions (edges, textures).
+Pixels are highly correlated. Meaningful patterns (edges, textures) appear in rotated and combined directions.
 
 ---
 
@@ -101,7 +108,7 @@ Pixels are highly correlated. Meaningful patterns live in rotated/combined direc
 Why does ML try to *learn* bases instead of fixing them?
 
 **Answer:**
-Because meaningful structure depends on data distribution.
+Because meaningful structure depends on the data distribution and task.
 
 ---
 
@@ -110,7 +117,7 @@ Because meaningful structure depends on data distribution.
 Why are word embeddings a change of basis?
 
 **Answer:**
-Words move from one-hot coordinates to semantic coordinates.
+Words move from sparse one-hot coordinates to dense semantic coordinates.
 
 ---
 
@@ -119,7 +126,7 @@ Words move from one-hot coordinates to semantic coordinates.
 What happens if the basis size is smaller than the space?
 
 **Answer:**
-Information loss (projection).
+Information loss due to projection.
 
 ---
 
@@ -128,7 +135,7 @@ Information loss (projection).
 What happens if the basis size is larger than needed?
 
 **Answer:**
-Redundancy, overparameterization.
+Redundancy and overparameterization.
 
 ---
 
@@ -137,7 +144,7 @@ Redundancy, overparameterization.
 Why is basis choice a modeling decision?
 
 **Answer:**
-It determines what patterns become easy or hard to learn.
+It determines which patterns are easy or hard for the model to learn.
 
 ---
 
@@ -147,13 +154,15 @@ It determines what patterns become easy or hard to learn.
 
 ### **Q13. (Example)**
 
-Check if (u=(1,2)) and (v=(2,-1)) are orthogonal.
+Check if ( u=(1,2) ) and ( v=(2,-1) ) are orthogonal.
 
 **Answer:**
-[
-u\cdot v=2-2=0
-\Rightarrow \text{orthogonal}
-]
+
+```math
+u \cdot v = 2 - 2 = 0
+```
+
+Vectors are orthogonal.
 
 ---
 
@@ -168,32 +177,35 @@ Orthogonal vectors share no directional information.
 
 ### **Q15. (Example)**
 
-Let (S=\text{span}{(1,1)}).
-Find (S^\perp).
+Let ( S=\text{span}{(1,1)} ). Find ( S^\perp ).
 
 **Answer:**
-Vectors satisfying (x+y=0).
-So (S^\perp=\text{span}{(1,-1)}).
+Vectors satisfying ( x+y=0 ).
+
+```math
+S^\perp=\text{span}\{(1,-1)\}
+```
 
 ---
 
 ### **Q16.**
 
-Why is (S \oplus S^\perp = \mathbb{R}^n)?
+Why is ( S \oplus S^\perp = \mathbb{R}^n )?
 
 **Answer:**
-Every vector decomposes into parallel + perpendicular components.
+Every vector decomposes into parallel and perpendicular components.
 
 ---
 
 ### **Q17. (Example)**
 
-Project (x=(3,1)) onto (u=(1,1)).
+Project ( x=(3,1) ) onto ( u=(1,1) ).
 
 **Answer:**
-[
+
+```math
 \text{proj}_u(x)=\frac{4}{2}(1,1)=(2,2)
-]
+```
 
 ---
 
@@ -211,7 +223,7 @@ Squared distance to the subspace.
 In linear regression, what is the prediction geometrically?
 
 **Answer:**
-Projection of target vector onto column space of features.
+Projection of the target vector onto the column space of features.
 
 ---
 
@@ -220,7 +232,7 @@ Projection of target vector onto column space of features.
 Why is regression error orthogonal to feature space?
 
 **Answer:**
-Because projection leaves residual in the orthogonal complement.
+Because projection leaves residuals in the orthogonal complement.
 
 ---
 
@@ -229,7 +241,7 @@ Because projection leaves residual in the orthogonal complement.
 Why does PCA use orthogonal directions?
 
 **Answer:**
-To avoid overlapping information.
+To prevent overlapping and redundant information.
 
 ---
 
@@ -247,7 +259,7 @@ Noise lies in low-variance orthogonal directions.
 Why are orthogonal features easier to optimize?
 
 **Answer:**
-Gradients don’t interfere.
+Gradients do not interfere with each other.
 
 ---
 
@@ -265,7 +277,7 @@ Each step subtracts projections onto previous directions.
 Why is orthogonality numerically stable?
 
 **Answer:**
-No amplification or suppression of values.
+It avoids amplification or suppression of values.
 
 ---
 
@@ -274,7 +286,7 @@ No amplification or suppression of values.
 Why does whitening help gradient descent?
 
 **Answer:**
-Makes all directions equally scaled.
+All directions become equally scaled.
 
 ---
 
@@ -292,11 +304,11 @@ Cosine measures angle, not magnitude.
 Why do attention models normalize dot products?
 
 **Answer:**
-To control projection magnitude.
+To control projection magnitude and stabilize gradients.
 
 ---
 
-## 🔴 SECTION C — CHANGE OF BASIS, ORTHONORMALITY, EIGENS (29–50)
+## 🔴 SECTION C — CHANGE OF BASIS, ORTHONORMALITY & EIGENS (29–50)
 
 ---
 
@@ -305,7 +317,7 @@ To control projection magnitude.
 Why is PCA a change of basis?
 
 **Answer:**
-It rotates axes to variance directions.
+It rotates axes toward directions of maximum variance.
 
 ---
 
@@ -320,10 +332,10 @@ Each coordinate evolves independently.
 
 ### **Q31. (Example)**
 
-Why are eigenvectors “natural axes”?
+Why are eigenvectors called “natural axes”?
 
 **Answer:**
-Transformation does not rotate them.
+The transformation does not rotate them.
 
 ---
 
@@ -332,7 +344,7 @@ Transformation does not rotate them.
 Why do eigenvalues measure importance?
 
 **Answer:**
-They scale variance or curvature.
+They scale variance or curvature along directions.
 
 ---
 
@@ -341,7 +353,7 @@ They scale variance or curvature.
 Why do small eigenvalues slow training?
 
 **Answer:**
-Flat directions → tiny gradients.
+Flat directions produce tiny gradients.
 
 ---
 
@@ -350,7 +362,7 @@ Flat directions → tiny gradients.
 Why do large eigenvalues cause instability?
 
 **Answer:**
-Gradients explode along those directions.
+Gradients explode along steep directions.
 
 ---
 
@@ -359,7 +371,7 @@ Gradients explode along those directions.
 Why do orthonormal bases avoid matrix inversion?
 
 **Answer:**
-Coordinates are dot products.
+Coordinates reduce to dot products.
 
 ---
 
@@ -368,7 +380,7 @@ Coordinates are dot products.
 Why does QR decomposition appear in optimization?
 
 **Answer:**
-It creates orthonormal directions for stability.
+It constructs stable orthonormal directions.
 
 ---
 
@@ -377,7 +389,7 @@ It creates orthonormal directions for stability.
 Why is covariance symmetric?
 
 **Answer:**
-Correlation is mutual.
+Correlation is mutual between variables.
 
 ---
 
@@ -395,7 +407,7 @@ Symmetric matrices guarantee orthogonal eigenvectors.
 Why does SVD generalize PCA?
 
 **Answer:**
-Works even when matrix isn’t square.
+It works for non-square matrices.
 
 ---
 
@@ -404,7 +416,7 @@ Works even when matrix isn’t square.
 Why does low-rank approximation help generalization?
 
 **Answer:**
-Removes noise and redundancy.
+It removes noise and redundancy.
 
 ---
 
@@ -413,7 +425,7 @@ Removes noise and redundancy.
 Why are embeddings learned instead of fixed?
 
 **Answer:**
-Meaning depends on task.
+Meaning depends on the task and data.
 
 ---
 
@@ -431,7 +443,7 @@ Basis weights change per input.
 Why does spectral normalization stabilize GANs?
 
 **Answer:**
-Controls largest eigenvalue.
+It controls the largest eigenvalue.
 
 ---
 
@@ -482,16 +494,16 @@ Independent factors lie in independent directions.
 
 ### **Q49.**
 
-Why is overcomplete basis sometimes useful?
+Why is an overcomplete basis sometimes useful?
 
 **Answer:**
-Multiple ways to represent same signal.
+It allows multiple representations of the same signal.
 
 ---
 
 ### **Q50. (MASTER HOTS)**
 
-Explain ML using bases in one paragraph.
+**Explain ML using bases in one paragraph.**
 
 **Answer:**
-Machine learning is the process of discovering coordinate systems in which complex data becomes simple. By rotating, projecting, scaling, and reweighting bases, models isolate meaningful directions, suppress noise, stabilize optimization, and make patterns linearly separable.
+Machine learning is the process of discovering coordinate systems in which complex data becomes simple. By rotating, projecting, scaling, and reweighting bases, models isolate meaningful directions, suppress noise, stabilize optimization, and make patterns easier to learn.
